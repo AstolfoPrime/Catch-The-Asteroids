@@ -51,10 +51,15 @@ class Scene(object):
         self.background = pygame.Surface(self.screen.get_size())
         self.background.fill((0, 0, 0))
         
+<<<<<<< HEAD
         self.sampleSprite = SuperSprite(self)
         self.sampleSprite.setSpeed(3)
         self.sampleSprite.setAngle(0)
         self.sampleSprite.boundAction = self.sampleSprite.WRAP
+=======
+        self.sampleSprite = Sprite(self)
+        self.sampleSprite.dx = 3
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         self.sprites = [self.sampleSprite]
         self.groups = []
     
@@ -190,11 +195,19 @@ class Sprite(pygame.sprite.Sprite):
         
         #motion private attributes
         #initialize directly to get clean starting values
+<<<<<<< HEAD
         self.__moveAngle = 0
         self.__imageAngle = 0
         self.__speed = 0
         self.__dx = 0 
         self.__dy = 0
+=======
+        self.__moveAngle = 0.0
+        self.__imageAngle = 0.0
+        self.__speed = 0.0
+        self.__dx = 0.0 
+        self.__dy = 0.0
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         
         # motion properties
         self.dx = 0
@@ -512,9 +525,15 @@ class Sprite(pygame.sprite.Sprite):
             will be rotated automatically """
         self.image = pygame.image.load(imageFile)
         if imageFile.endswith(".png"):
+<<<<<<< HEAD
           self.image = self.image.convert_alpha()
         else:
           self.image = self.image.convert()
+=======
+            self.image = self.image.convert_alpha()
+        else:
+            self.image = self.image.convert()
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         self.rect = self.image.get_rect()
         self.imageMaster = self.image
         
@@ -701,13 +720,22 @@ class TxtInput(Button):
     def __init__(self):
         super().__init__()
         self.takingInput = False
+<<<<<<< HEAD
         self.activeColor = pygame.Color("yellow")
+=======
+        self.activeColor = "yellow"
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         self.standardColor = self.bgColor
         
     def readKeys(self, event):
         
         if self.takingInput:
+<<<<<<< HEAD
             self.bgColor = pygame.Color("yellow")
+=======
+            #self.bgColor = "yellow"
+            self.bgColor = (255, 255, 0)
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         else:
             self.bgColor = self.standardColor
         
@@ -752,6 +780,10 @@ class Scroller(Button):
             (mousex, mousey) = pygame.mouse.get_pos()
             if mousex < self.rect.centerx:
                 self.value -= self.increment
+<<<<<<< HEAD
+=======
+                mousey *=1
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
                 if self.value < self.minValue:
                     self.value = self.minValue
             else:
@@ -829,6 +861,7 @@ class MultiLabel(pygame.sprite.Sprite):
         self.center = self.oldCenter
         
 class Timer(object):
+<<<<<<< HEAD
   def __init__(self):
     super().__init__()
     self.start()
@@ -853,6 +886,32 @@ class Sound(object):
 
   def play(self):
     self.sound.play()
+=======
+    def __init__(self):
+        super().__init__()
+        self.start()
+        self.totalTime = 1000
+
+    def start(self):
+        self.__startTime = time.time()
+    
+    def getElapsedTime(self):
+        self.__now = time.time()
+        elapsedTime = self.__now - self.__startTime
+        return elapsedTime
+
+    def getTimeLeft(self):
+        timeLeft = self.totalTime - self.getElapsedTime()
+        return timeLeft
+
+class Sound(object):
+    def __init__(self, soundFile):
+        super().__init__()
+        self.sound = pygame.mixer.Sound(soundFile)
+
+    def play(self):
+        self.sound.play()
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
 
 class SpriteSheet():
     """ handles basic character animation """
@@ -1003,9 +1062,15 @@ class BasicSprite(pygame.sprite.Sprite):
             will be rotated automatically """
         self.image = pygame.image.load(imageFile)
         if imageFile.endswith(".png"):
+<<<<<<< HEAD
           self.image = self.image.convert_alpha()
         else:
           self.image = self.image.convert()
+=======
+            self.image = self.image.convert_alpha()
+        else:
+            self.image = self.image.convert()
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         self.rect = self.image.get_rect()
           
     def collidesWith(self, target):
@@ -1068,6 +1133,7 @@ class SuperSprite(pygame.sprite.Sprite):
         
         #create properties
         #most will be changed through method calls
+<<<<<<< HEAD
         self.x = 200
         self.y = 200
         self.dx = 0
@@ -1077,6 +1143,17 @@ class SuperSprite(pygame.sprite.Sprite):
         self.speed = 0
         self.maxSpeed = 10
         self.minSpeed = -3
+=======
+        self.x = 200.0
+        self.y = 200.0
+        self.dx = 0.0
+        self.dy = 0.0
+        self.dir = 0.0
+        self.rotation = 0.0
+        self.speed = 0.0
+        self.maxSpeed = 10.0
+        self.minSpeed = -3.0
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         self.boundAction = self.WRAP
         self.pressed = False
         self.oldCenter = (100, 100)
@@ -1089,7 +1166,11 @@ class SuperSprite(pygame.sprite.Sprite):
         self.__calcVector()
         self.__calcPosition()
         self.checkBounds()
+<<<<<<< HEAD
         self.rect.center = (self.x, self.y)
+=======
+        self.rect.center = (int(self.x), int(self.y))
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
     
     def checkEvents(self):
         """ overwrite this method to add your own event code """
@@ -1255,9 +1336,15 @@ class SuperSprite(pygame.sprite.Sprite):
             will be rotated automatically """
         self.imageMaster = pygame.image.load(image)
         if image.endswith(".png"):
+<<<<<<< HEAD
           self.imageMaster = self.imageMaster.convert_alpha()
         else:
           self.imageMaster = self.imageMaster.convert()
+=======
+            self.imageMaster = self.imageMaster.convert_alpha()
+        else:
+            self.imageMaster = self.imageMaster.convert()
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
     
     def setDX(self, dx):
         """ changes dx value and updates vector """
@@ -1303,7 +1390,11 @@ class SuperSprite(pygame.sprite.Sprite):
         """
         (self.x, self.y) = position
         #update the rect
+<<<<<<< HEAD
         self.rect.center = self.x, self.y
+=======
+        self.rect.center = int(self.x), int(self.y)
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         
     def moveBy (self, vector):
         """ move the sprite by the (dx, dy) values in vector
@@ -1313,7 +1404,11 @@ class SuperSprite(pygame.sprite.Sprite):
         (dx, dy) = vector
         self.x += dx
         self.y += dy
+<<<<<<< HEAD
         self.__checkBounds()
+=======
+        self.checkBounds()
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
 
     def forward(self, amt):
         """ move amt pixels in the current direction
@@ -1403,7 +1498,11 @@ class SuperSprite(pygame.sprite.Sprite):
             if pygame.mouse.get_pressed() == (0, 0, 0):
                 if self.rect.collidepoint(pygame.mouse.get_pos()):
                     released = True
+<<<<<<< HEAD
             return released
+=======
+        return released
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         
     def collidesWith(self, target):
         """ boolean function. Returns True if the sprite
@@ -1426,13 +1525,22 @@ class SuperSprite(pygame.sprite.Sprite):
             Does not count collision if either sprite is hidden
             
         """
+<<<<<<< HEAD
+=======
+        out = None
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         if self.visible:
             collision = pygame.sprite.spritecollideany(self, target)
             if collision:
                 if collision.visible:
+<<<<<<< HEAD
                     return collision
                 else:
                     return None
+=======
+                    out = collision
+        return out    
+>>>>>>> 27d6e7c (Will add sound later but the project is finished)
         
     def distanceTo(self, point):
         """ returns distance to any point in pixels
